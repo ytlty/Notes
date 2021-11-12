@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+        "-//Puppy Crawl//DTD Check Configuration 1.2//EN"
+        "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
+
+<module name="Checker">
+    <!-- Enforce newline EOF -->
+    <!-- https://checkstyle.sourceforge.io/config_misc.html#NewlineAtEndOfFile -->
+    <module name="NewlineAtEndOfFile"/>
+
+    <!-- Limit max file length -->
+    <!-- https://checkstyle.sourceforge.io/config_sizes.html -->
+    <module name="FileLength">
+        <property name="max" value="2500"/>
+    </module>
+
+    <!-- Built for ultra-wide! -->
+    <module name="LineLength">
+        <property name="max" value="180"/>
+    </module>
+
+    <!-- Check for trailing white spaces-->
+    <!-- https://checkstyle.sourceforge.io/config_regexp.html#RegexpSingleline -->
+    <!-- https://stackoverflow.com/questions/9100059/checkstyle-trailing-spaces-regexp-issue -->
+    <module name="RegexpSingleline">
+        <!-- Gotta use "&lt;" instead of "<" or the checkstyle build fails -->
+        <property name="format" value="(?&lt;!\A[ \t]*\*?)[ \t]$"/>
+        <property name="message" value="Line has trailing whitespaces."/>
+        <property name="severity" value="warning"/>
+    </module>
+
+    <module name="TreeWalker">
+        <module name="EmptyBlock"/>
+
+
+        <!-- https://checkstyle.sourceforge.io/config_naming.html -->
+        <module name="ConstantName"/>
+        <module name="LocalFinalVariableName"/>
+        <module name="LocalVariableName"/>
+        <module name="MemberName"/>
+        <module name="TypeName"/>
+        <module name="StaticVariableName"/>
+        <module name="ParameterName"/>
+        <module name="PackageName"/>
+        <module name="MethodName"/>
+
+        <!-- This will prevent myself making a boo boo. -->
+        <!-- https://checkstyle.sourceforge.io/config_imports.html -->
+        <module name="AvoidStarImport"/>
+        <module name="IllegalImport">
+            <property name="illegalPkgs" value="javafx, java\.sql"/>
+        </module>
+        <module name="RedundantImport"/>
+        <module name="UnusedImports"/>
+
+        <!-- https://checkstyle.sourceforge.io/config_whitespace.html -->
+        <module name="EmptyForIteratorPad"/>
+        <module name="GenericWhitespace"/>
+        <module name="NoWhitespaceBefore"/>
+        <module name="NoWhitespaceAfter"/>
+        <module name="ParenPad"/>
+        <module name="TypecastParenPad"/>
+        <module name="WhitespaceAround"/>
+        <module name="WhitespaceAfter"/>
+
+        <!-- https://checkstyle.sourceforge.io/config_modifier.html -->
+        <module name="ModifierOrder"/>
+        <module name="RedundantModifier"/>
+
+        <!-- Sneaky little ~hobbitses~ braces -->
+        <!-- https://checkstyle.sourceforge.io/config_blocks.html -->
+        <module name="LeftCurly"/>
+        <module name="NeedBraces"/>
+        <module name="RightCurly"/>
+
+
+        <!-- Coding style checks, always good to have -->
+        <!-- https://checkstyle.sourceforge.io/config_blocks.html -->
+        <module name="EqualsHashCode"/>
+        <module name="EmptyStatement"/>
+        <module name="HiddenField">
+            <property name="ignoreSetter" value="true"/>
+            <property name="ignoreConstructorParameter" value="true"/>
+            <property name="severity" value="warning"/>
+        </module>
+        <module name="IllegalInstantiation"/>
+        <module name="InnerAssignment"/>
+        <module name="MissingSwitchDefault"/>
+        <module name="SimplifyBooleanExpression"/>
+        <module name="SimplifyBooleanReturn"/>
+
+        <!-- The classics -->
+        <!-- https://checkstyle.sourceforge.io/config_design.html -->
+        <module name="FinalClass"/>
+        <module name="VisibilityModifier"/>
+
+        <!-- Other checks -->
+        <!-- https://checkstyle.sourceforge.io/config_misc.html -->
+        <module name="ArrayTypeStyle"/>
+        <module name="TodoComment">
+            <!-- I'd like to know about TODOs but don't break the build -->
+            <property name="severity" value="info"/>
+        </module>
+        <module name="UpperEll"/>
+
+
+    </module>
+</module>
